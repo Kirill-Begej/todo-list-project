@@ -1,7 +1,7 @@
 {
   "name": "todo-list-project",
-  "version": "0.0.1",
-  "description": "",
+  "version": "1.0.1",
+  "description": "Landing page TO-DO List",
   "main": "index.js",
   "scripts": {
     "start": "webpack serve --env mode=development",
@@ -12,9 +12,20 @@
     "lint:scss": "npx stylelint \"**/*.scss\"",
     "lint:scss:fix": "npx stylelint \"**/*.scss\" --fix"
   },
-  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kirill-Begej/todo-list-project.git"
+  },
+  "keywords": [
+    "Todo List",
+    "Todo App"
+  ],
   "author": "Kirill Begej",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kirill-Begej/todo-list-project/issues"
+  },
+  "homepage": "https://github.com/Kirill-Begej/todo-list-project#readme",
   "devDependencies": {
     "@babel/core": "^7.24.3",
     "@babel/eslint-parser": "^7.24.1",
