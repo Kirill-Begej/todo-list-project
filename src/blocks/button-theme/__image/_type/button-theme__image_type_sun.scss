@@ -1,0 +1,9 @@
+.button-theme__image_type_sun {
+  opacity: 0;
+  right: 4px;
+  top: 5px;
+}
+
+.button-theme__input:not(:checked) ~ .button-theme__image_type_sun {
+  opacity: 1;
+}

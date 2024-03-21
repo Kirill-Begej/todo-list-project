@@ -1,6 +1,16 @@
 @import '../vendor/variables.scss';
+@import '../vendor/fonts.scss';
 @import '../blocks/root/root.scss';
 @import '../blocks/container/container.scss';
 @import '../blocks/header/header.scss';
+@import '../blocks/button-theme/button-theme.scss';
+@import '../blocks/button-theme/__image/button-theme__image.scss';
+@import '../blocks/button-theme/__input/button-theme__input.scss';
+@import '../blocks/button-theme/__switch/button-theme__switch.scss';
+@import '../blocks/title/title.scss';
+@import '../blocks/button-add/button-add.scss';
+@import '../blocks/button-add/__image/button-add__image.scss';
 @import '../blocks/content/content.scss';
 @import '../blocks/footer/footer.scss';
+@import '../blocks/button-theme/__image/_type/button-theme__image_type_moon.scss';
+@import '../blocks/button-theme/__image/_type/button-theme__image_type_sun.scss';

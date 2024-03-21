@@ -6,15 +6,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Лендинг страницы задач TO DO List">
   <meta name="keywords"
-    content="To Do, To Do List, задачи, список задачб список дел">
+    content="To Do, To Do List, task manager, задачи, список задач, список дел">
   <meta name="author" content="Кирилл Бегей">
-  <title>TO-DO List</title>
+  <title>Tasks Manager</title>
 </head>
 <body class="root">
   <div class="container">
 
     <header class="header">
-      
+      <label class="button-theme">
+        <input class="button-theme__input" type="checkbox">
+        <span class="button-theme__switch"></span>
+        <img src="./images/button-theme/sun.svg" alt="Иконка солнца." class="button-theme__image button-theme__image_type_sun">
+        <img src="./images/button-theme/moon.svg" alt="Иконка луны." class="button-theme__image button-theme__image_type_moon">
+      </label>
+      <h1 class="title">tasks manager</h1>
+      <button class="button-add" type="button">
+        <img class="button-add__image" src="./images/button-add/button-add.svg" alt="Иконка добавления задачи.">
+      </button>
     </header>
 
     <main class="content">

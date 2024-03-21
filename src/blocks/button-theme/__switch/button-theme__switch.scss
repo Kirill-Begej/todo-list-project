@@ -1,0 +1,27 @@
+.button-theme__switch {
+  background-color: #ccc;
+  border-radius: 30px;
+  border: 1px solid $mainColorLightTheme;
+  cursor: pointer;
+  inset: 0;
+  position: absolute;
+  transition: .4s;
+}
+
+.button-theme__switch::before {
+  background-color: white;
+  border-radius: 50%;
+  bottom: 1.516px;
+  box-shadow: 0 0 5px black;
+  content: "";
+  height: 25px;
+  left: 3px;
+  position: absolute;
+  transition: transform .4s;
+  width: 25px;
+  z-index: 10;
+}
+
+.button-theme__input:checked + .button-theme__switch::before {
+  transform: translateX(27.5px);
+}

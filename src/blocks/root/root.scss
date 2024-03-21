@@ -1,8 +1,16 @@
 .root {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
   background-color: $bgColor;
   box-sizing: border-box;
   display: flex;
+  font-family: "Inter", "Arial", sans-serif;
+  font-size: 16px;
   justify-content: center;
+  line-height: 1.25;
   overflow: hidden;
   padding: $rootPadding 0;
   width: 100vw;

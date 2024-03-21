@@ -1,6 +1,9 @@
 {
   "extends": "stylelint-config-standard",
   "rules": {
-    "import-notation": null
+    "import-notation": null,
+    "font-family-name-quotes": "always-unless-keyword",
+    "property-no-vendor-prefix": null,
+    "selector-class-pattern": null
   }
 }
