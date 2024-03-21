@@ -1,5 +1,6 @@
-.root {
-  background: #000;
-  display: flex;
-  border: 1px solid red;
-}
+@import '../vendor/variables.scss';
+@import '../blocks/root/root.scss';
+@import '../blocks/container/container.scss';
+@import '../blocks/header/header.scss';
+@import '../blocks/content/content.scss';
+@import '../blocks/footer/footer.scss';

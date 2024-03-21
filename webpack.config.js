@@ -9,14 +9,6 @@ module.exports = (env) => {
   const isDev = env.mode === 'development';
   const isProd = env.mode === 'production';
 
-  const fontsLoader = {
-    test: /\.(woff|woff2|eot|ttf|otf)$/i,
-    type: 'asset/resource',
-    generator: {
-      filename: 'fonts/[name][ext]',
-    },
-  };
-
   const postCssLoader = {
     loader: 'postcss-loader',
     options: {
@@ -43,6 +35,14 @@ module.exports = (env) => {
     ],
   };
 
+  const fontsLoader = {
+    test: /\.(woff|woff2|eot|ttf|otf)$/i,
+    type: 'asset/resource',
+    generator: {
+      filename: 'fonts/[name][ext]',
+    },
+  };
+
   const babelLoader = {
     test: /\.(?:js|mjs|cjs)$/i,
     exclude: /node_modules/,
@@ -65,6 +65,7 @@ module.exports = (env) => {
       clean: true,
     },
     devServer: {
+      static: path.resolve(__dirname, 'src'),
       port: env.port ?? 8080,
       open: true,
       hot: true,
@@ -77,6 +78,7 @@ module.exports = (env) => {
       new HtmlWebpackPlugin({
         template: path.resolve(__dirname, 'src', 'index.html'),
       }),
+      new webpack.HotModuleReplacementPlugin(),
       isDev && new webpack.ProgressPlugin(),
       isProd && new MiniCssExtractPlugin({
         filename: 'css/[name].[contenthash:8].css',
@@ -91,8 +93,8 @@ module.exports = (env) => {
     ].filter(Boolean),
     module: {
       rules: [
-        fontsLoader,
         scssLoader,
+        fontsLoader,
         babelLoader,
       ],
     },
