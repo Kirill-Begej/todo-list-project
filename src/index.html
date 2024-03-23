@@ -22,7 +22,9 @@
       </label>
       <h1 class="title">tasks manager</h1>
       <button class="button-add" type="button">
-        <img class="button-add__image" src="./images/button-add/button-add.svg" alt="Иконка добавления задачи.">
+        <svg class="button-add__image">
+          <use href="./images/button-add/button-add.svg#add"></use>
+        </svg>
       </button>
     </header>
 
@@ -31,7 +33,30 @@
     </main>
 
     <footer class="footer">
-      
+      <div class="footer__author">Developed by Kirill Begej</div>
+      <ul class="social-link">
+        <li class="social-link__item">
+          <a href="https://github.com/kirill-begej" class="social-link__link" target="_blank">
+            <svg class="social-link__image">
+              <use href="./images/social-link/social-link.svg#githab"></use>
+            </svg>
+          </a>
+        </li>
+        <li class="social-link__item">
+          <a href="https://t.me/kirill1389" class="social-link__link" target="_blank">
+            <svg class="social-link__image">
+              <use href="./images/social-link/social-link.svg#telegram"></use>
+            </svg>
+          </a>
+        </li>
+        <li class="social-link__item">
+          <a href="https://vk.com/kfleki" class="social-link__link" target="_blank">
+            <svg class="social-link__image">
+              <use href="./images/social-link/social-link.svg#vk"></use>
+            </svg>
+          </a>
+        </li>
+      </ul>
     </footer>
 
   </div>

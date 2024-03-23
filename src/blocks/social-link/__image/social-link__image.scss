@@ -1,0 +1,12 @@
+.social-link__image {
+  display: block;
+  height: 32px;
+  width: 32px;
+  fill: #000;
+  transition: fill .4s;
+}
+
+.social-link__image:hover {
+  fill: #2B1887;
+}
+

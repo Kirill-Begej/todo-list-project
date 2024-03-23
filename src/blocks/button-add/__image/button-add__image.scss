@@ -1,4 +1,10 @@
 .button-add__image {
   height: 50px;
   width: 50px;
+  fill: #000;
+  transition: fill .4s .2s;
+}
+
+.button-add__image:hover {
+  fill: #2B1887;
 }
