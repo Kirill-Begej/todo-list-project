@@ -1,0 +1,9 @@
+.tasks__item {
+  align-items: center;
+  background-color: $taskItemBgColor;
+  border-radius: 10px;
+  cursor: grab;
+  display: flex;
+  gap: 10px;
+  padding: 10px 5px;
+}

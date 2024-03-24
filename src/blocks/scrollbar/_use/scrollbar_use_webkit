@@ -1,0 +1,14 @@
+.scrollbar_use_webkit {
+  .tasks__list-wrap::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scrollbar_use_webkit::-webkit-scrollbar-track {
+  background: $bgBlockColor;
+}
+
+.scrollbar_use_webkit::-webkit-scrollbar-thumb {
+  background: $mainColorLightTheme;
+  border-radius: 20px;
+}
+}

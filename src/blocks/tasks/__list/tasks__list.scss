@@ -1,0 +1,10 @@
+.tasks__list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  inset: 0 3px 0 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+}

@@ -21,7 +21,7 @@
         <img src="./images/button-theme/moon.svg" alt="Иконка луны." class="button-theme__image button-theme__image_type_moon">
       </label>
       <h1 class="title">tasks manager</h1>
-      <button class="button-add" type="button">
+      <button class="button-add" type="button" title="Add task">
         <svg class="button-add__image">
           <use href="./images/button-add/button-add.svg#add"></use>
         </svg>
@@ -29,30 +29,94 @@
     </header>
 
     <main class="content">
-      
+      <div class="tasks">
+        <div class="tasks__title-wrap">
+          <svg class="tasks__title-image">
+            <use href="./images/tasks/tasks.svg#clipboard"></use>
+          </svg>
+          <h2 class="tasks__title">To Do</h2>
+        </div>
+        <div class="tasks__list-wrap tasks__list-wrap_scrollbar_webkit">
+          <ul class="tasks__list">
+            <li class="tasks__item">
+              <div class="tasks__move">
+                <svg class="tasks__move-icon">
+                  <use href="./images/tasks/tasks.svg#move"></use>
+                </svg>
+              </div>
+              <h3 class="tasks__item-title">Любишь играть</h3>
+              <div class="tasks__icons-wrap">
+                <button class="tasks__icons-button" type="button" title="Remove task">
+                  <svg class="tasks__icon tasks__icon_type_remove">
+                    <use href="./images/tasks/tasks.svg#remove"></use>
+                  </svg>
+                </button>
+                <button class="tasks__icons-button" type="button" title="To do task">
+                  <svg class="tasks__icon tasks__icon_type_progress">
+                    <use href="./images/tasks/tasks.svg#progress"></use>
+                  </svg>
+                </button>
+                <button class="tasks__icons-button" type="button" title="Done task">
+                  <svg class="tasks__icon tasks__icon_type_done">
+                    <use href="./images/tasks/tasks.svg#done"></use>
+                  </svg>
+                </button>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tasks">
+        <div class="tasks__title-wrap">
+          <svg class="tasks__title-image">
+            <use href="./images/tasks/tasks.svg#clipboard"></use>
+          </svg>
+          <h2 class="tasks__title">To Do</h2>
+        </div>
+        <div class="tasks__list-wrap tasks__list-wrap_scrollbar_webkit">
+          <ul class="tasks__list">
+            
+          </ul>
+        </div>
+      </div>
+
+      <div class="tasks">
+        <div class="tasks__title-wrap">
+          <svg class="tasks__title-image">
+            <use href="./images/tasks/tasks.svg#clipboard"></use>
+          </svg>
+          <h2 class="tasks__title">Done</h2>
+        </div>
+        <div class="tasks__list-wrap tasks__list-wrap_scrollbar_webkit">
+          <ul class="tasks__list">
+            
+          </ul>
+        </div>
+      </div>
     </main>
 
     <footer class="footer">
       <div class="footer__author">Developed by Kirill Begej</div>
-      <ul class="social-link">
-        <li class="social-link__item">
-          <a href="https://github.com/kirill-begej" class="social-link__link" target="_blank">
-            <svg class="social-link__image">
-              <use href="./images/social-link/social-link.svg#githab"></use>
+      <ul class="socials-link">
+        <li class="socials-link__item">
+          <a href="https://github.com/kirill-begej" class="socials-link__link" target="_blank">
+            <svg class="socials-link__image">
+              <use href="./images/socials-link/socials-link.svg#githab"></use>
             </svg>
           </a>
         </li>
-        <li class="social-link__item">
-          <a href="https://t.me/kirill1389" class="social-link__link" target="_blank">
-            <svg class="social-link__image">
-              <use href="./images/social-link/social-link.svg#telegram"></use>
+        <li class="socials-link__item">
+          <a href="https://t.me/kirill1389" class="socials-link__link" target="_blank">
+            <svg class="socials-link__image">
+              <use href="./images/socials-link/socials-link.svg#telegram"></use>
             </svg>
           </a>
         </li>
-        <li class="social-link__item">
-          <a href="https://vk.com/kfleki" class="social-link__link" target="_blank">
-            <svg class="social-link__image">
-              <use href="./images/social-link/social-link.svg#vk"></use>
+        <li class="socials-link__item">
+          <a href="https://vk.com/kfleki" class="socials-link__link" target="_blank">
+            <svg class="socials-link__image">
+              <use href="./images/socials-link/socials-link.svg#vk"></use>
             </svg>
           </a>
         </li>
