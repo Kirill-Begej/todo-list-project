@@ -1,0 +1,12 @@
+.popup__container {
+  align-items: center;
+  background-color: $bgBlockColor;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 500px;
+  padding: 30px;
+  position: relative;
+  width: 100%;
+}

@@ -1,0 +1,13 @@
+.popup__button-save {
+  font-family: "Inter", "Arial", sans-serif;
+  font-size: 26px;
+  max-width: 300px;
+  padding: 5px 0;
+  width: 100%;
+  transition: color .4s,
+              box-shadow .4s;
+}
+
+.popup__button-save:hover {
+  color: #274684
+}

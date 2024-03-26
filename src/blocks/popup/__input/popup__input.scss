@@ -1,0 +1,11 @@
+.popup__input {
+  border-radius: 10px;
+  border: 1px solid #fff;
+  outline: none;
+  padding: 10px 5px;
+  transition: border .4s;
+}
+
+.popup__input:focus {
+  border: 1px solid $mainColorLightTheme;
+}

@@ -4,6 +4,8 @@
     "import-notation": null,
     "font-family-name-quotes": "always-unless-keyword",
     "property-no-vendor-prefix": null,
-    "selector-class-pattern": null
+    "selector-class-pattern": null,
+    "color-function-notation": "legacy",
+    "alpha-value-notation": "number"
   }
 }

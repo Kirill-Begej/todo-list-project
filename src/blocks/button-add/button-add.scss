@@ -13,15 +13,10 @@
 }
 
 .button-add {
-  cursor: pointer;
-  border: 1px solid $mainColorLightTheme;
   padding: 0 2px;
-  border-radius: 10px;
-  background-color: #ccc;
   transition: box-shadow .4s .2s;
 }
 
 .button-add:hover {
 	animation: bounce 1s;
-  box-shadow: 0 0 5px black;
 }
