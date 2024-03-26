@@ -8,20 +8,20 @@
   <meta name="keywords"
     content="To Do, To Do List, task manager, задачи, список задач, список дел">
   <meta name="author" content="Кирилл Бегей">
-  <title>Tasks Manager</title>
+  <title>To-Do List</title>
 </head>
 <body class="root">
   <div class="container">
 
     <header class="header">
       <label class="button-theme">
-        <input class="button-theme__input" type="checkbox">
+        <input class="button-theme__input" type="checkbox" aria-label="Изменить цветовую тему.">
         <span class="button-theme__switch"></span>
         <img src="./images/button-theme/sun.svg" alt="Иконка солнца." class="button-theme__image button-theme__image_type_sun">
         <img src="./images/button-theme/moon.svg" alt="Иконка луны." class="button-theme__image button-theme__image_type_moon">
       </label>
-      <h1 class="title">tasks manager</h1>
-      <button class="button-add" type="button" title="Add task">
+      <h1 class="title">To-Do List</h1>
+      <button class="button-add" type="button" title="Добавить задачу." aria-label="Добавить задачу">
         <svg class="button-add__image">
           <use href="./images/button-add/button-add.svg#add"></use>
         </svg>
@@ -38,31 +38,7 @@
         </div>
         <div class="tasks__list-wrap tasks__list-wrap_scrollbar_webkit">
           <ul class="tasks__list">
-            <li class="tasks__item">
-              <div class="tasks__move">
-                <svg class="tasks__move-icon">
-                  <use href="./images/tasks/tasks.svg#move"></use>
-                </svg>
-              </div>
-              <h3 class="tasks__item-title">Любишь играть</h3>
-              <div class="tasks__icons-wrap">
-                <button class="tasks__icons-button" type="button" title="Remove task">
-                  <svg class="tasks__icon tasks__icon_type_remove">
-                    <use href="./images/tasks/tasks.svg#remove"></use>
-                  </svg>
-                </button>
-                <button class="tasks__icons-button" type="button" title="To do task">
-                  <svg class="tasks__icon tasks__icon_type_progress">
-                    <use href="./images/tasks/tasks.svg#progress"></use>
-                  </svg>
-                </button>
-                <button class="tasks__icons-button" type="button" title="Done task">
-                  <svg class="tasks__icon tasks__icon_type_done">
-                    <use href="./images/tasks/tasks.svg#done"></use>
-                  </svg>
-                </button>
-              </div>
-            </li>
+            
           </ul>
         </div>
       </div>
@@ -123,6 +99,33 @@
       </ul>
     </footer>
 
+    <template id="taskTemplate">
+      <li class="tasks__item">
+        <div class="tasks__move">
+          <svg class="tasks__move-icon">
+            <use href="./images/tasks/tasks.svg#move"></use>
+          </svg>
+        </div>
+        <h3 class="tasks__item-title"></h3>
+        <div class="tasks__icons-wrap">
+          <button class="tasks__icons-button" type="button" title="Удалить задачу" aria-label="Удалить задачу.">
+            <svg class="tasks__icon tasks__icon_type_remove">
+              <use href="./images/tasks/tasks.svg#remove"></use>
+            </svg>
+          </button>
+          <button class="tasks__icons-button" type="button" title="Начать выполнять задачу" aria-label="Начать выполнять задачу.">
+            <svg class="tasks__icon tasks__icon_type_progress">
+              <use href="./images/tasks/tasks.svg#progress"></use>
+            </svg>
+          </button>
+          <button class="tasks__icons-button" type="button" title="Задача выполнена" aria-label="Задача выполнена.">
+            <svg class="tasks__icon tasks__icon_type_done">
+              <use href="./images/tasks/tasks.svg#done"></use>
+            </svg>
+          </button>
+        </div>
+      </li>
+    </template>
   </div>
 </body>
 </html>
