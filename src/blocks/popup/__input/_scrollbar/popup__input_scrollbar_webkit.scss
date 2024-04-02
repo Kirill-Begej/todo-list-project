@@ -1,0 +1,9 @@
+.popup__input_scrollbar_webkit::-webkit-scrollbar {
+  width: 15px;
+}
+
+.popup__input_scrollbar_webkit::-webkit-scrollbar-thumb {
+  background: var(--main-color);
+  background-clip: content-box;
+  border: 5px solid transparent;
+}

@@ -3,8 +3,10 @@
   border-radius: 10px;
   border: 1px solid var(--popup-input-bg-color);
   color: var(--main-text-color);
+  height: 60px;
   outline: none;
   padding: 10px 5px;
+  resize: none;
   transition: border .4s;
 }
 

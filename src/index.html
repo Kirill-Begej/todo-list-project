@@ -104,7 +104,25 @@
       <h2 class="popup__title">Добавить задачу</h2>
       <form class="popup__form" name="addTaskForm" novalidate>
         <label class="popup__field">
-          <input type="text" class="popup__input" name="inputTask" placeholder="Введите задачу" minlength="2" maxlength="100" pattern="^[^ |^\-][a-zA-Z|а-яА-яЁё|0-9|\s|\-]+$" required>
+          <textarea class="popup__input popup__input_scrollbar_webkit" name="inputTask" placeholder="Введите задачу" minlength="2" maxlength="200" pattern="^[^ |^\-][a-zA-Z|а-яА-яЁё|0-9|\s|\-]+$" required></textarea>
+          <span class="popup__input-error">Разрешены латинские, кириллические буквы, цифры, дефисы и пробелы</span>
+        </label>
+        <button class="button popup__button-save" type="submit" aria-label="Сохранить задачу.">Сохранить</button>
+      </form>
+      <button class="popup__button-close" type="button" aria-label="Закрыть окно добаления новой задачи.">
+        <svg class="popup__close-icon">
+          <use href="./images/popup/close-icon.svg#close"></use>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="popup">
+    <div class="popup__container">
+      <h2 class="popup__title">Редактировать задачу</h2>
+      <form class="popup__form" name="addTaskForm" novalidate>
+        <label class="popup__field">
+          <textarea class="popup__input popup__input_scrollbar_webkit" name="inputTask" placeholder="Введите задачу" minlength="2" maxlength="200" pattern="^[^ |^\-][a-zA-Z|а-яА-яЁё|0-9|\s|\-]+$" required></textarea>
           <span class="popup__input-error">Разрешены латинские, кириллические буквы, цифры, дефисы и пробелы</span>
         </label>
         <button class="button popup__button-save" type="submit" aria-label="Сохранить задачу.">Сохранить</button>
