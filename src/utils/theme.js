@@ -1,29 +1,23 @@
-import { buttonTheme, root } from './constants';
+import { root } from './constants';
 
-const setDarkTheme = () => {
-  root.classList.remove('normal');
-  root.classList.add('dark');
-  localStorage.setItem('theme', 'dark');
-};
-
-const setNormalTheme = () => {
-  root.classList.remove('dark');
-  root.classList.add('normal');
-  localStorage.setItem('theme', 'normal');
+const setColorTheme = (element, removeClass, addClass) => {
+  element.classList.remove(removeClass);
+  element.classList.add(addClass);
+  localStorage.setItem('theme', addClass);
 };
 
 export const setTheme = (button) => {
   if (button.checked) {
-    setDarkTheme();
+    setColorTheme(root, 'normal', 'dark');
   } else {
-    setNormalTheme();
+    setColorTheme(root, 'dark', 'normal');
   }
 };
 
-export const checkTheme = (theme) => {
+export const checkTheme = (theme, button) => {
   if (theme && theme === 'dark') {
-    setDarkTheme();
-    buttonTheme.checked = true;
+    setColorTheme(root, 'normal', 'dark');
+    button.checked = true;
   } else {
     localStorage.setItem('theme', 'normal');
   }

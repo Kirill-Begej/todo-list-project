@@ -1,5 +1,5 @@
 export default class Theme {
-  constructor({ setTheme, checkTheme }, button) {
+  constructor(button, setTheme, checkTheme) {
     this._button = button;
     this._setTheme = setTheme;
     this._checkTheme = checkTheme;
@@ -18,6 +18,6 @@ export default class Theme {
   enableTheme() {
     this._themeInLocalStorage();
     this._setEventListeners();
-    this._checkTheme(this._theme);
+    this._checkTheme(this._theme, this._button);
   }
 }
