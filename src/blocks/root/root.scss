@@ -4,7 +4,7 @@
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
-  background-color: $bgColor;
+  background-color: var(--main-color);
   box-sizing: border-box;
   display: flex;
   font-family: "Inter", "Arial", sans-serif;

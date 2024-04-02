@@ -1,11 +1,13 @@
 .popup__input {
+  background-color: var(--popup-input-bg-color);
   border-radius: 10px;
-  border: 1px solid #fff;
+  border: 1px solid var(--popup-input-bg-color);
+  color: var(--main-text-color);
   outline: none;
   padding: 10px 5px;
   transition: border .4s;
 }
 
 .popup__input:focus {
-  border: 1px solid $mainColorLightTheme;
+  border: 1px solid var(--popup--input-border-hover-color);
 }

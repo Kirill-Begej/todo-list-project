@@ -1,7 +1,9 @@
 .popup__container {
   align-items: center;
-  background-color: $bgBlockColor;
+  background-color: var(--secondary-color);
   border-radius: 10px;
+  border: 1px solid var(--popup-border-color);
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   gap: 20px;

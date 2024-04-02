@@ -1,7 +1,7 @@
 .button-theme__switch {
-  background-color: #ccc;
+  background-color: var(--button-bg-color);
   border-radius: 30px;
-  border: 1px solid $mainColorLightTheme;
+  border: 1px solid var(--button-border-color);
   cursor: pointer;
   inset: 0;
   position: absolute;
@@ -9,10 +9,10 @@
 }
 
 .button-theme__switch::before {
-  background-color: white;
+  background-color: var(--button-theme-switch-color);
   border-radius: 50%;
   bottom: 1.516px;
-  box-shadow: 0 0 5px black;
+  box-shadow: 0 0 5px var(--button-shadow-color);
   content: "";
   height: 25px;
   left: 3px;

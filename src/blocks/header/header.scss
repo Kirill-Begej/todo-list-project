@@ -1,6 +1,6 @@
 .header {
   align-items: center;
-  background-color: $bgBlockColor;
+  background-color: var(--secondary-color);
   border-radius: 10px;
   display: flex;
   justify-content: space-between;

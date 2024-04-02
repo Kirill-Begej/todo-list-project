@@ -6,6 +6,7 @@
     "property-no-vendor-prefix": null,
     "selector-class-pattern": null,
     "color-function-notation": "legacy",
-    "alpha-value-notation": "number"
+    "alpha-value-notation": "number",
+    "custom-property-pattern": null
   }
 }

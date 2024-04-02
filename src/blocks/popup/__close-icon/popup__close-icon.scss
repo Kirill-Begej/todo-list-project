@@ -1,6 +1,8 @@
 .popup__close-icon {
   display: block;
-  fill: #fff;
+  fill: var(--secondary-color);
   height: 32px;
-  width: 32px;
+  width: 32px;  
+  stroke-width: 1px;
+  stroke: var(--popup-border-color);
 }

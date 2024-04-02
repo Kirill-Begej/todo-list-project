@@ -2,11 +2,11 @@
   display: block;
   height: 32px;
   width: 32px;
-  fill: #000;
+  fill: var(--social-link-color);
   transition: fill .4s;
 }
 
 .socials-link__image:hover {
-  fill: $mainColorLightTheme;
+  fill: var(--social-link-hover-color);
 }
 

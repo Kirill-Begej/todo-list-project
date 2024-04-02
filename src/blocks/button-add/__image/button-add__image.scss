@@ -1,10 +1,10 @@
 .button-add__image {
   height: 50px;
   width: 50px;
-  fill: #000;
+  fill: var(--button-color);
   transition: fill .4s .2s;
 }
 
 .button-add__image:hover {
-  fill: $mainColorLightTheme;
+  fill: var(--button-hover-color);
 }

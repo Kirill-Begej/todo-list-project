@@ -1,11 +1,11 @@
 .button {
-  background-color: #ccc;
+  background-color: var(--button-bg-color);
   border-radius: 10px;
-  border: 1px solid $mainColorLightTheme;
+  border: 1px solid var(--button-border-color);
   cursor: pointer;
   transition: box-shadow .4s;
 }
 
 .button:hover {
-  box-shadow: 0 0 5px black;
+  box-shadow: 0 0 5px var(--button-shadow-color);
 }

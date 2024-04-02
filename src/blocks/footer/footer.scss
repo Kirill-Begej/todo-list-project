@@ -1,8 +1,8 @@
 .footer {
   align-items: center;
-  background-color: $bgBlockColor;
+  background-color: var(--secondary-color);
   border-radius: 10px;
-  color: $mainTextColor;
+  color: var(--main-text-color);
   display: flex;
   font-family: "Inter", "Arial", sans-serif;
   font-size: 18px;

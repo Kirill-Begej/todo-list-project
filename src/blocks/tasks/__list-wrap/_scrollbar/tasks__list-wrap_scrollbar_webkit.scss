@@ -3,10 +3,10 @@
 }
 
 .tasks__list-wrap_scrollbar_webkit::-webkit-scrollbar-track {
-  background: $bgBlockColor;
+  background: var(--secondary-color);
 }
 
 .tasks__list-wrap_scrollbar_webkit::-webkit-scrollbar-thumb {
-  background: $mainColorLightTheme;
+  background: var(--main-color);
   border-radius: 20px;
 }

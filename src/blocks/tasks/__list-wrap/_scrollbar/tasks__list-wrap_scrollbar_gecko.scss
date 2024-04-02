@@ -1,4 +1,4 @@
 .tasks__list-wrap_scrollbar_gecko {
-  scrollbar-color: $mainColorLightTheme $bgBlockColor;
+  scrollbar-color: var(--main-color) var(--secondary-color);
   scrollbar-width: thin;
 }
