@@ -1,4 +1,4 @@
-export class Task {
+export default class Task {
   constructor({ text }, container) {
     this._text = text;
     this._container = container;

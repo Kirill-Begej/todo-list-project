@@ -1,13 +1,14 @@
 import 'normalize.css';
 import './index.scss';
 import Theme from '../components/Theme';
-import { buttonTheme, taskTemplate, toDoTaskSection } from '../utils/constants';
+import Section from '../components/Section';
+import Task from '../components/Task';
+import * as constants from '../utils/constants';
 import { checkTheme, setTheme } from '../utils/theme';
 import { setMockData } from '../utils/mockData';
-import { Section } from '../components/Section';
-import { Task } from '../components/Task';
+import PopupAddTask from '../components/PopupAddTask';
 
-const theme = new Theme({ setTheme, checkTheme }, buttonTheme);
+const theme = new Theme({ setTheme, checkTheme }, constants.buttonTheme);
 
 theme.enableTheme();
 
@@ -16,12 +17,18 @@ setMockData();
 const toDoTasksList = new Section(
   {
     renderer: (item) => {
-      const task = new Task({ text: item }, taskTemplate);
+      const task = new Task({ text: item }, constants.taskTemplate);
       const taskElement = task.generate();
       toDoTasksList.setTask(taskElement);
     },
   },
-  toDoTaskSection,
+  constants.toDoTaskSection,
 );
 
 toDoTasksList.setAppLoadListener();
+
+const popupAddTask = new PopupAddTask(constants.popupAddTask);
+
+constants.buttonAddTask.addEventListener('click', () => {
+  popupAddTask.open();
+});

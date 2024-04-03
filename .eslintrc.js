@@ -16,5 +16,6 @@ module.exports = {
     'class-methods-use-this': 0,
     'no-underscore-dangle': 0,
     'no-param-reassign': 0,
+    'no-useless-constructor': 0,
   },
 };

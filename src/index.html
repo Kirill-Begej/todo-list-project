@@ -21,7 +21,7 @@
         <img src="./images/button-theme/moon.svg" alt="Иконка луны." class="button-theme__image button-theme__image_type_moon">
       </label>
       <h1 class="title">To-Do List</h1>
-      <button class="button button-add" type="button" title="Добавить задачу." aria-label="Добавить задачу">
+      <button class="button button-add" id="buttonAddTask" type="button" title="Добавить задачу." aria-label="Добавить задачу">
         <svg class="button-add__image">
           <use href="./images/button-add/button-add.svg#add"></use>
         </svg>
@@ -99,7 +99,7 @@
     </footer>
   </div>
 
-  <div class="popup">
+  <div class="popup" id="popupAddTask">
     <div class="popup__container">
       <h2 class="popup__title">Добавить задачу</h2>
       <form class="popup__form" name="addTaskForm" novalidate>
@@ -120,7 +120,7 @@
   <div class="popup">
     <div class="popup__container">
       <h2 class="popup__title">Редактировать задачу</h2>
-      <form class="popup__form" name="addTaskForm" novalidate>
+      <form class="popup__form" name="editTaskForm" novalidate>
         <label class="popup__field">
           <textarea class="popup__input popup__input_scrollbar_webkit" name="inputTask" placeholder="Введите задачу" minlength="2" maxlength="200" pattern="^[^ |^\-][a-zA-Z|а-яА-яЁё|0-9|\s|\-]+$" required></textarea>
           <span class="popup__input-error">Разрешены латинские, кириллические буквы, цифры, дефисы и пробелы</span>
