@@ -1,12 +1,14 @@
 export default class Theme {
-  constructor(button, setTheme, checkTheme) {
+  constructor({ setTheme, checkTheme }, button) {
     this._button = button;
     this._setTheme = setTheme;
     this._checkTheme = checkTheme;
   }
 
   _themeInLocalStorage() {
-    this._theme = localStorage.getItem('theme') ? localStorage.getItem('theme') : false;
+    this._theme = localStorage.getItem('theme')
+      ? localStorage.getItem('theme')
+      : false;
   }
 
   _setEventListeners() {
