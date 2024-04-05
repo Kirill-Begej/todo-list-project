@@ -4,6 +4,7 @@ import Theme from '../components/Theme';
 import Section from '../components/Section';
 import Task from '../components/Task';
 import TaskInProgress from '../components/TaskInProgress';
+import TaskDone from '../components/TaskDone';
 import * as constants from '../utils/constants';
 import { checkTheme, setTheme } from '../utils/theme';
 import PopupAddTask from '../components/PopupAddTask';
@@ -20,6 +21,12 @@ const addTask = (item) => {
 
 const addTaskInProgress = (item) => {
   const task = new TaskInProgress({ text: item }, constants.taskTemplate);
+  const taskElement = task.generate();
+  return taskElement;
+};
+
+const addTaskDone = (item) => {
+  const task = new TaskDone({ text: item }, constants.taskTemplate);
   const taskElement = task.generate();
   return taskElement;
 };
@@ -52,7 +59,7 @@ const doneTaskList = new Section(
   {
     keyInLocalStorage: 'done',
     renderer: (taskText) => {
-      doneTaskList.setTask(addTask(taskText), taskText);
+      doneTaskList.setTask(addTaskDone(taskText), taskText);
     },
   },
   constants.doneTaskSection,
