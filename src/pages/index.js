@@ -19,6 +19,7 @@ const addTask = (item) => {
 
 const toDoTasksList = new Section(
   {
+    keyInLocalStorage: 'toDo',
     renderer: (taskText) => {
       toDoTasksList.setTask(addTask(taskText), taskText);
     },
@@ -27,6 +28,30 @@ const toDoTasksList = new Section(
 );
 
 toDoTasksList.setAppLoadListener();
+
+const inProgressTaskList = new Section(
+  {
+    keyInLocalStorage: 'inProgress',
+    renderer: (taskText) => {
+      inProgressTaskList.setTask(addTask(taskText), taskText);
+    },
+  },
+  constants.inProgressTaskSection,
+);
+
+inProgressTaskList.setAppLoadListener();
+
+const doneTaskList = new Section(
+  {
+    keyInLocalStorage: 'done',
+    renderer: (taskText) => {
+      doneTaskList.setTask(addTask(taskText), taskText);
+    },
+  },
+  constants.doneTaskSection,
+);
+
+doneTaskList.setAppLoadListener();
 
 const popupAddTask = new PopupAddTask(
   {

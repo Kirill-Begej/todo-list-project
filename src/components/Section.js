@@ -1,19 +1,20 @@
 export default class Section {
-  constructor({ renderer }, container) {
+  constructor({ keyInLocalStorage, renderer }, container) {
+    this._keyInLocalStorage = keyInLocalStorage;
     this._renderer = renderer;
     this._container = container;
     this._renderedTask = [];
   }
 
   _checkInLocalStorage() {
-    this._tasksInLocalStorage = localStorage.getItem('toDo')
-      ? JSON.parse(localStorage.getItem('toDo'))
+    this._tasksInLocalStorage = localStorage.getItem(this._keyInLocalStorage)
+      ? JSON.parse(localStorage.getItem(this._keyInLocalStorage))
       : [];
   }
 
   _setInLocalStorage(taskText) {
     this._renderedTask.push(taskText);
-    localStorage.setItem('toDo', JSON.stringify(this._renderedTask));
+    localStorage.setItem(this._keyInLocalStorage, JSON.stringify(this._renderedTask));
   }
 
   _renderTasks() {
