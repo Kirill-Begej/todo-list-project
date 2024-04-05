@@ -14,19 +14,43 @@ const theme = new Theme({ setTheme, checkTheme }, constants.buttonTheme);
 theme.enableTheme();
 
 const addTask = (item) => {
-  const task = new Task({ text: item }, constants.taskTemplate);
+  const task = new Task(
+    {
+      text: item,
+      deleteTask: (taskText, taskElement) => {
+        toDoTasksList.deleteTask(taskText, taskElement);
+      },
+    },
+    constants.taskTemplate,
+  );
   const taskElement = task.generate();
   return taskElement;
 };
 
 const addTaskInProgress = (item) => {
-  const task = new TaskInProgress({ text: item }, constants.taskTemplate);
+  const task = new TaskInProgress(
+    {
+      text: item,
+      deleteTask: (taskText, taskElement) => {
+        inProgressTaskList.deleteTask(taskText, taskElement);
+      },
+    },
+    constants.taskTemplate,
+  );
   const taskElement = task.generate();
   return taskElement;
 };
 
 const addTaskDone = (item) => {
-  const task = new TaskDone({ text: item }, constants.taskTemplate);
+  const task = new TaskDone(
+    {
+      text: item,
+      deleteTask: (taskText, taskElement) => {
+        doneTaskList.deleteTask(taskText, taskElement);
+      },
+    },
+    constants.taskTemplate,
+  );
   const taskElement = task.generate();
   return taskElement;
 };

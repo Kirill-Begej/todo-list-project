@@ -12,8 +12,7 @@ export default class Section {
       : [];
   }
 
-  _setInLocalStorage(taskText) {
-    this._renderedTask.push(taskText);
+  _setInLocalStorage() {
     localStorage.setItem(this._keyInLocalStorage, JSON.stringify(this._renderedTask));
   }
 
@@ -29,7 +28,15 @@ export default class Section {
   }
 
   setTask(task, taskText) {
-    this._setInLocalStorage(taskText);
+    this._renderedTask.push(taskText);
+    this._setInLocalStorage();
     this._container.append(task);
+  }
+
+  deleteTask(taskText, taskElement) {
+    const tasks = this._renderedTask.filter((item) => item !== taskText);
+    this._renderedTask = tasks;
+    this._setInLocalStorage();
+    taskElement.remove();
   }
 }
