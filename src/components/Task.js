@@ -5,16 +5,14 @@ export default class Task {
   }
 
   _getElement() {
-    const taskElement = this._container.content.querySelector('.tasks__item').cloneNode(true);
-
-    return taskElement;
+    this._taskElement = this._container.content.querySelector('.tasks__item').cloneNode(true);
   }
 
   generate() {
-    this._element = this._getElement();
+    this._getElement();
 
-    this._element.querySelector('.tasks__item-title').textContent = this._text;
+    this._taskElement.querySelector('.tasks__item-title').textContent = this._text;
 
-    return this._element;
+    return this._taskElement;
   }
 }

@@ -3,6 +3,7 @@ import './index.scss';
 import Theme from '../components/Theme';
 import Section from '../components/Section';
 import Task from '../components/Task';
+import TaskInProgress from '../components/TaskInProgress';
 import * as constants from '../utils/constants';
 import { checkTheme, setTheme } from '../utils/theme';
 import PopupAddTask from '../components/PopupAddTask';
@@ -13,6 +14,12 @@ theme.enableTheme();
 
 const addTask = (item) => {
   const task = new Task({ text: item }, constants.taskTemplate);
+  const taskElement = task.generate();
+  return taskElement;
+};
+
+const addTaskInProgress = (item) => {
+  const task = new TaskInProgress({ text: item }, constants.taskTemplate);
   const taskElement = task.generate();
   return taskElement;
 };
@@ -33,7 +40,7 @@ const inProgressTaskList = new Section(
   {
     keyInLocalStorage: 'inProgress',
     renderer: (taskText) => {
-      inProgressTaskList.setTask(addTask(taskText), taskText);
+      inProgressTaskList.setTask(addTaskInProgress(taskText), taskText);
     },
   },
   constants.inProgressTaskSection,
