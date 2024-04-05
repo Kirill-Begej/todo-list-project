@@ -5,21 +5,22 @@ import Section from '../components/Section';
 import Task from '../components/Task';
 import * as constants from '../utils/constants';
 import { checkTheme, setTheme } from '../utils/theme';
-import { setMockData } from '../utils/mockData';
 import PopupAddTask from '../components/PopupAddTask';
 
 const theme = new Theme({ setTheme, checkTheme }, constants.buttonTheme);
 
 theme.enableTheme();
 
-setMockData();
+const addTask = (item) => {
+  const task = new Task({ text: item }, constants.taskTemplate);
+  const taskElement = task.generate();
+  return taskElement;
+};
 
 const toDoTasksList = new Section(
   {
-    renderer: (item) => {
-      const task = new Task({ text: item }, constants.taskTemplate);
-      const taskElement = task.generate();
-      toDoTasksList.setTask(taskElement);
+    renderer: (taskText) => {
+      toDoTasksList.setTask(addTask(taskText), taskText);
     },
   },
   constants.toDoTaskSection,
@@ -27,7 +28,15 @@ const toDoTasksList = new Section(
 
 toDoTasksList.setAppLoadListener();
 
-const popupAddTask = new PopupAddTask(constants.popupAddTask);
+const popupAddTask = new PopupAddTask(
+  {
+    handleSubmit: (taskText) => {
+      toDoTasksList.setTask(addTask(taskText), taskText);
+      popupAddTask.close();
+    },
+  },
+  constants.popupAddTask,
+);
 
 constants.buttonAddTask.addEventListener('click', () => {
   popupAddTask.open();

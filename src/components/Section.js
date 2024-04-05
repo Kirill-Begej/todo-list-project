@@ -2,28 +2,33 @@ export default class Section {
   constructor({ renderer }, container) {
     this._renderer = renderer;
     this._container = container;
+    this._renderedTask = [];
   }
 
   _checkInLocalStorage() {
-    this._renderedTask = localStorage.getItem('toDo')
+    this._tasksInLocalStorage = localStorage.getItem('toDo')
       ? JSON.parse(localStorage.getItem('toDo'))
-      : false;
+      : [];
   }
 
-  setAppLoadListener() {
-    this._checkInLocalStorage();
-    if (this._renderedTask) {
-      window.addEventListener('load', () => {
-        this._renderTasks();
-      });
-    }
+  _setInLocalStorage(taskText) {
+    this._renderedTask.push(taskText);
+    localStorage.setItem('toDo', JSON.stringify(this._renderedTask));
   }
 
   _renderTasks() {
-    this._renderedTask.forEach((item) => this._renderer(item));
+    this._tasksInLocalStorage.forEach((task) => this._renderer(task));
   }
 
-  setTask(element) {
-    this._container.append(element);
+  setAppLoadListener() {
+    window.addEventListener('load', () => {
+      this._checkInLocalStorage();
+      this._renderTasks();
+    });
+  }
+
+  setTask(task, taskText) {
+    this._setInLocalStorage(taskText);
+    this._container.append(task);
   }
 }
