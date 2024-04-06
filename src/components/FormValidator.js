@@ -24,8 +24,6 @@ export default class FormValidator {
       return 'Введите название задачи.';
     } else if (formInput.value.length >= 1 && formInput.value.length < formInput.getAttribute('minlength')) {
       return `Минимальное количество символов: ${formInput.getAttribute('minlength')}. Длина текста сейчас: ${formInput.value.length} символ.`;
-    } else if (formInput.validity.patternMismatch) {
-      return formInput.dataset.errorMessage;
     }
   }
 
