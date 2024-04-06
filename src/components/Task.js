@@ -4,11 +4,13 @@ export default class Task {
     editTask,
     deleteTask,
     inProgressTask,
+    doneTask,
   }, container) {
     this._text = text;
     this._editTask = editTask;
     this._deleteTask = deleteTask;
     this._inProgressTask = inProgressTask;
+    this._doneTask = doneTask;
     this._container = container;
   }
 
@@ -26,6 +28,11 @@ export default class Task {
     if (this._taskElement.querySelector('#buttonProgress')) {
       this._taskElement.querySelector('#buttonProgress').addEventListener('click', () => {
         this._inProgressTask(this._text, this._taskElement);
+      });
+    }
+    if (this._taskElement.querySelector('#buttonDone')) {
+      this._taskElement.querySelector('#buttonDone').addEventListener('click', () => {
+        this._doneTask(this._text, this._taskElement);
       });
     }
   }

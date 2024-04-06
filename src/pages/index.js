@@ -29,6 +29,10 @@ const addTask = (item) => {
         tasksLists.toDoTasksList.deleteTask(taskText, taskElement);
         tasksLists.inProgressTasksList.setTask(addTaskInProgress(taskText), taskText);
       },
+      doneTask: (taskText, taskElement) => {
+        tasksLists.toDoTasksList.deleteTask(taskText, taskElement);
+        tasksLists.doneTasksList.setTask(addTaskDone(taskText), taskText);
+      },
     },
     constants.taskTemplate,
   );
@@ -45,6 +49,10 @@ const addTaskInProgress = (item) => {
       },
       deleteTask: (taskText, taskElement) => {
         tasksLists.inProgressTasksList.deleteTask(taskText, taskElement);
+      },
+      doneTask: (taskText, taskElement) => {
+        tasksLists.inProgressTasksList.deleteTask(taskText, taskElement);
+        tasksLists.doneTasksList.setTask(addTaskDone(taskText), taskText);
       },
     },
     constants.taskTemplate,
