@@ -11,9 +11,8 @@ import PopupAddTask from '../components/PopupAddTask';
 import PopupEditTask from '../components/PopupEditTask';
 
 const tasksLists = {};
-const theme = new Theme({ setTheme, checkTheme }, constants.buttonTheme);
 
-theme.enableTheme();
+const theme = new Theme({ setTheme, checkTheme }, constants.buttonTheme);
 
 const addTask = (item) => {
   const task = new Task(
@@ -88,8 +87,6 @@ tasksLists.toDoTasksList = new Section(
   constants.toDoTaskSection,
 );
 
-tasksLists.toDoTasksList.setAppLoadListener();
-
 tasksLists.inProgressTasksList = new Section(
   {
     keyInLocalStorage: 'inProgress',
@@ -100,8 +97,6 @@ tasksLists.inProgressTasksList = new Section(
   constants.inProgressTaskSection,
 );
 
-tasksLists.inProgressTasksList.setAppLoadListener();
-
 tasksLists.doneTasksList = new Section(
   {
     keyInLocalStorage: 'done',
@@ -111,8 +106,6 @@ tasksLists.doneTasksList = new Section(
   },
   constants.doneTaskSection,
 );
-
-tasksLists.doneTasksList.setAppLoadListener();
 
 const popupAddTask = new PopupAddTask(
   {
@@ -134,6 +127,11 @@ const popupEditTask = new PopupEditTask(
   },
   constants.popupEditTask,
 );
+
+theme.enableTheme();
+tasksLists.toDoTasksList.setAppLoadListener();
+tasksLists.inProgressTasksList.setAppLoadListener();
+tasksLists.doneTasksList.setAppLoadListener();
 
 constants.buttonAddTask.addEventListener('click', () => {
   popupAddTask.open();
