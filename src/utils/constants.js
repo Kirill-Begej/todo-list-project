@@ -6,3 +6,4 @@ export const inProgressTaskSection = document.querySelector('#inProgress');
 export const doneTaskSection = document.querySelector('#done');
 export const taskTemplate = document.querySelector('#taskTemplate');
 export const popupAddTask = document.querySelector('#popupAddTask');
+export const popupEditTask = document.querySelector('#popupEditTask');

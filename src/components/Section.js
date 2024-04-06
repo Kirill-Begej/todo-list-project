@@ -39,4 +39,12 @@ export default class Section {
     this._setInLocalStorage();
     taskElement.remove();
   }
+
+  editTask(taskText, taskElement) {
+    const oldTaskValue = taskElement.querySelector('.tasks__item-title').textContent;
+    const tasks = this._renderedTask.map((item) => (item === oldTaskValue ? taskText : item));
+    this._renderedTask = tasks;
+    this._setInLocalStorage();
+    taskElement.querySelector('.tasks__item-title').textContent = taskText;
+  }
 }

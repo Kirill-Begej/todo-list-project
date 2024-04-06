@@ -1,8 +1,8 @@
 import Task from './Task';
 
 export default class TaskInProgress extends Task {
-  constructor({ text, deleteTask }, container) {
-    super({ text, deleteTask }, container);
+  constructor({ text, editTask, deleteTask }, container) {
+    super({ text, editTask, deleteTask }, container);
   }
 
   _deleteProgressButton() {

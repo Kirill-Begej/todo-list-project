@@ -1,7 +1,9 @@
 export default class Popup {
-  constructor(popupElement) {
+  constructor({ handleSubmit }, popupElement) {
     this._popup = popupElement;
     this._closeButton = this._popup.querySelector('.popup__button-close');
+    this._handleSubmit = handleSubmit;
+    this._form = this._popup.querySelector('.popup__form');
   }
 
   _handleOverlayClick(e) {
@@ -10,10 +12,9 @@ export default class Popup {
     }
   }
 
-  _handleEscClose(e) {
-    if (e.key === 'Escape') {
-      this.close();
-    }
+  _submitForm(e) {
+    e.preventDefault();
+    this._handleSubmit(e.target.querySelector('.popup__input').value);
   }
 
   _addEventListeners() {
@@ -21,14 +22,11 @@ export default class Popup {
     this._closeButton.addEventListener('click', this._clickCloseButton);
     this._clickOverlay = this._handleOverlayClick.bind(this);
     this._popup.addEventListener('mousedown', this._clickOverlay);
-    this._clickEsc = this._handleEscClose.bind(this);
-    document.addEventListener('keydown', this._clickEsc);
   }
 
   _removeEventListeners() {
     this._closeButton.removeEventListener('click', this._clickCloseButton);
     this._popup.removeEventListener('mousedown', this._clickOverlay);
-    document.removeEventListener('keydown', this._clickEsc);
   }
 
   open() {
