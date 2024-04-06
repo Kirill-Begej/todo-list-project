@@ -18,5 +18,7 @@ module.exports = {
     'no-param-reassign': 0,
     'no-useless-constructor': 0,
     'no-use-before-define': 0,
+    'no-else-return': 0,
+    'consistent-return': 0,
   },
 };

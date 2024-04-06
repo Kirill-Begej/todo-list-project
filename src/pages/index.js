@@ -1,16 +1,18 @@
 import 'normalize.css';
 import './index.scss';
 import Theme from '../components/Theme';
-import Section from '../components/Section';
 import Task from '../components/Task';
 import TaskInProgress from '../components/TaskInProgress';
 import TaskDone from '../components/TaskDone';
-import * as constants from '../utils/constants';
-import { checkTheme, setTheme } from '../utils/theme';
+import Section from '../components/Section';
+import FormValidator from '../components/FormValidator';
 import PopupAddTask from '../components/PopupAddTask';
 import PopupEditTask from '../components/PopupEditTask';
+import * as constants from '../utils/constants';
+import { checkTheme, setTheme } from '../utils/theme';
 
 const tasksLists = {};
+const formValidators = {};
 
 const theme = new Theme({ setTheme, checkTheme }, constants.buttonTheme);
 
@@ -20,6 +22,7 @@ const addTask = (item) => {
       text: item,
       editTask: (taskText, taskElement) => {
         popupEditTask.open(taskText, taskElement);
+        formValidators.editTaskForm.resetValidation();
       },
       deleteTask: (taskText, taskElement) => {
         tasksLists.toDoTasksList.deleteTask(taskText, taskElement);
@@ -45,6 +48,7 @@ const addTaskInProgress = (item) => {
       text: item,
       editTask: (taskText, taskElement) => {
         popupEditTask.open(taskText, taskElement);
+        formValidators.editTaskForm.resetValidation();
       },
       deleteTask: (taskText, taskElement) => {
         tasksLists.inProgressTasksList.deleteTask(taskText, taskElement);
@@ -66,6 +70,7 @@ const addTaskDone = (item) => {
       text: item,
       editTask: (taskText, taskElement) => {
         popupEditTask.open(taskText, taskElement);
+        formValidators.editTaskForm.resetValidation();
       },
       deleteTask: (taskText, taskElement) => {
         tasksLists.doneTasksList.deleteTask(taskText, taskElement);
@@ -107,6 +112,17 @@ tasksLists.doneTasksList = new Section(
   constants.doneTaskSection,
 );
 
+const enableValidation = (formConfig) => {
+  const formsList = Array.from(document.querySelectorAll(formConfig.formSelector));
+  formsList.forEach((formElement) => {
+    const validator = new FormValidator(formConfig, formElement);
+    const formName = formElement.getAttribute('name');
+
+    formValidators[formName] = validator;
+    validator.enableValidation();
+  });
+};
+
 const popupAddTask = new PopupAddTask(
   {
     handleSubmit: (taskText) => {
@@ -132,7 +148,9 @@ theme.enableTheme();
 tasksLists.toDoTasksList.setAppLoadListener();
 tasksLists.inProgressTasksList.setAppLoadListener();
 tasksLists.doneTasksList.setAppLoadListener();
+enableValidation(constants.validationConfig);
 
 constants.buttonAddTask.addEventListener('click', () => {
   popupAddTask.open();
+  formValidators.addTaskForm.resetValidation();
 });
