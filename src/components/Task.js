@@ -1,8 +1,14 @@
 export default class Task {
-  constructor({ text, editTask, deleteTask }, container) {
+  constructor({
+    text,
+    editTask,
+    deleteTask,
+    inProgressTask,
+  }, container) {
     this._text = text;
     this._editTask = editTask;
     this._deleteTask = deleteTask;
+    this._inProgressTask = inProgressTask;
     this._container = container;
   }
 
@@ -17,6 +23,11 @@ export default class Task {
     this._taskElement.querySelector('#buttonRemove').addEventListener('click', () => {
       this._deleteTask(this._text, this._taskElement);
     });
+    if (this._taskElement.querySelector('#buttonProgress')) {
+      this._taskElement.querySelector('#buttonProgress').addEventListener('click', () => {
+        this._inProgressTask(this._text, this._taskElement);
+      });
+    }
   }
 
   generate() {

@@ -25,6 +25,10 @@ const addTask = (item) => {
       deleteTask: (taskText, taskElement) => {
         tasksLists.toDoTasksList.deleteTask(taskText, taskElement);
       },
+      inProgressTask: (taskText, taskElement) => {
+        tasksLists.toDoTasksList.deleteTask(taskText, taskElement);
+        tasksLists.inProgressTasksList.setTask(addTaskInProgress(taskText), taskText);
+      },
     },
     constants.taskTemplate,
   );
