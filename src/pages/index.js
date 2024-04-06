@@ -1,6 +1,7 @@
 import 'normalize.css';
 import './index.scss';
 import Theme from '../components/Theme';
+import Scrollbar from '../components/Scrollbar';
 import Task from '../components/Task';
 import TaskInProgress from '../components/TaskInProgress';
 import TaskDone from '../components/TaskDone';
@@ -15,6 +16,7 @@ const tasksLists = {};
 const formValidators = {};
 
 const theme = new Theme({ setTheme, checkTheme }, constants.buttonTheme);
+const scrollbar = new Scrollbar();
 
 const addTask = (item) => {
   const task = new Task(
@@ -145,6 +147,7 @@ const popupEditTask = new PopupEditTask(
 );
 
 theme.enableTheme();
+scrollbar.setClass();
 tasksLists.toDoTasksList.setAppLoadListener();
 tasksLists.inProgressTasksList.setAppLoadListener();
 tasksLists.doneTasksList.setAppLoadListener();
