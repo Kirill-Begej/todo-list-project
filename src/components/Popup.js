@@ -12,6 +12,12 @@ export default class Popup {
     }
   }
 
+  _handleEsc(e) {
+    if (e.key === 'Escape') {
+      this.close();
+    }
+  }
+
   _submitForm(e) {
     e.preventDefault();
     this._handleSubmit(e.target.querySelector('.popup__input').value);
@@ -22,11 +28,17 @@ export default class Popup {
     this._closeButton.addEventListener('click', this._clickCloseButton);
     this._clickOverlay = this._handleOverlayClick.bind(this);
     this._popup.addEventListener('mousedown', this._clickOverlay);
+    this._clickEsc = this._handleEsc.bind(this);
+    document.addEventListener('keydown', this._clickEsc);
+    this._clickSubmit = this._submitForm.bind(this);
+    this._popup.addEventListener('submit', this._clickSubmit);
   }
 
   _removeEventListeners() {
     this._closeButton.removeEventListener('click', this._clickCloseButton);
     this._popup.removeEventListener('mousedown', this._clickOverlay);
+    document.removeEventListener('keydown', this._clickEsc);
+    this._popup.removeEventListener('submit', this._clickSubmit);
   }
 
   open() {
