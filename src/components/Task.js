@@ -4,18 +4,25 @@ export default class Task {
     editTask,
     deleteTask,
     inProgressTask,
-    doneTask,
+    completedTask,
+    dragEventListener,
   }, container) {
     this._text = text;
     this._editTask = editTask;
     this._deleteTask = deleteTask;
     this._inProgressTask = inProgressTask;
-    this._doneTask = doneTask;
+    this._completedTask = completedTask;
+    this._dragEventListener = dragEventListener;
     this._container = container;
+  }
+
+  _setAttributeDraggable() {
+    this._taskElement.setAttribute('draggable', 'true');
   }
 
   _getElement() {
     this._taskElement = this._container.content.querySelector('.tasks__item').cloneNode(true);
+    this._setAttributeDraggable();
   }
 
   _addEventListeners() {
@@ -30,10 +37,13 @@ export default class Task {
         this._inProgressTask(this._taskElement.querySelector('.tasks__item-title').textContent, this._taskElement);
       });
     }
-    if (this._taskElement.querySelector('#buttonDone')) {
-      this._taskElement.querySelector('#buttonDone').addEventListener('click', () => {
-        this._doneTask(this._taskElement.querySelector('.tasks__item-title').textContent, this._taskElement);
+    if (this._taskElement.querySelector('#buttonCompleted')) {
+      this._taskElement.querySelector('#buttonCompleted').addEventListener('click', () => {
+        this._completedTask(this._taskElement.querySelector('.tasks__item-title').textContent, this._taskElement);
       });
+    }
+    if (this._taskElement.hasAttribute('draggable')) {
+      this._dragEventListener(this._taskElement);
     }
   }
 

@@ -5,13 +5,15 @@ export default class TaskInProgress extends Task {
     text,
     editTask,
     deleteTask,
-    doneTask,
+    completedTask,
+    dragEventListener,
   }, container) {
     super({
       text,
       editTask,
       deleteTask,
-      doneTask,
+      completedTask,
+      dragEventListener,
     }, container);
   }
 

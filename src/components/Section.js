@@ -1,7 +1,23 @@
 export default class Section {
-  constructor({ keyInLocalStorage, renderer }, container) {
+  constructor(
+    {
+      keyInLocalStorage,
+      renderer,
+      rendererOnDrop,
+      dragoverEventListener,
+      dragenterEventListener,
+      dragleaveEventListener,
+      dropEventListener,
+    },
+    container,
+  ) {
     this._keyInLocalStorage = keyInLocalStorage;
     this._renderer = renderer;
+    this._rendererOnDrop = rendererOnDrop;
+    this._dragoverEventListener = dragoverEventListener;
+    this._dragenterEventListener = dragenterEventListener;
+    this._dragleaveEventListener = dragleaveEventListener;
+    this._dropEventListener = dropEventListener;
     this._container = container;
     this._renderedTask = [];
   }
@@ -16,20 +32,41 @@ export default class Section {
     localStorage.setItem(this._keyInLocalStorage, JSON.stringify(this._renderedTask));
   }
 
+  _setSectionsInLocalStorage() {
+    const toDoTasks = [...document.querySelector('#toDo').querySelectorAll('.tasks__item-title')].map((item) => item.textContent);
+    const inProgressTasks = [...document.querySelector('#inProgress').querySelectorAll('.tasks__item-title')].map((item) => item.textContent);
+    const completedTasks = [...document.querySelector('#completed').querySelectorAll('.tasks__item-title')].map((item) => item.textContent);
+    localStorage.setItem('toDo', JSON.stringify(toDoTasks));
+    localStorage.setItem('inProgress', JSON.stringify(inProgressTasks));
+    localStorage.setItem('completed', JSON.stringify(completedTasks));
+  }
+
   _renderTasks() {
     this._tasksInLocalStorage.forEach((task) => this._renderer(task));
   }
 
-  setAppLoadListener() {
+  _renderTaskOnDrop() {
+    this._tasksInLocalStorage.forEach((task) => this._rendererOnDrop(task));
+  }
+
+  addEventListeners() {
     window.addEventListener('load', () => {
       this._checkInLocalStorage();
       this._renderTasks();
     });
+    this._dragoverEventListener(this._container);
+    this._dragenterEventListener(this._container);
+    this._dragleaveEventListener(this._container);
+    this._dropEventListener(this._container);
   }
 
   setTask(task, taskText) {
     this._renderedTask.push(taskText);
     this._setInLocalStorage();
+    this._container.append(task);
+  }
+
+  setTaskOnDrop(task) {
     this._container.append(task);
   }
 

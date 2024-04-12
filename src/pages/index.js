@@ -2,9 +2,10 @@ import 'normalize.css';
 import './index.scss';
 import Theme from '../components/Theme';
 import Scrollbar from '../components/Scrollbar';
+import DragAndDrop from '../components/DragAndDrop';
 import Task from '../components/Task';
 import TaskInProgress from '../components/TaskInProgress';
-import TaskDone from '../components/TaskDone';
+import TaskCompleted from '../components/TaskCompleted';
 import Section from '../components/Section';
 import FormValidator from '../components/FormValidator';
 import PopupAddTask from '../components/PopupAddTask';
@@ -17,6 +18,7 @@ const formValidators = {};
 
 const theme = new Theme({ setTheme, checkTheme }, constants.buttonTheme);
 const scrollbar = new Scrollbar();
+const dragAndDrop = new DragAndDrop();
 
 const addTask = (item) => {
   const task = new Task(
@@ -33,10 +35,11 @@ const addTask = (item) => {
         tasksLists.toDoTasksList.deleteTask(taskText, taskElement);
         tasksLists.inProgressTasksList.setTask(addTaskInProgress(taskText), taskText);
       },
-      doneTask: (taskText, taskElement) => {
+      completedTask: (taskText, taskElement) => {
         tasksLists.toDoTasksList.deleteTask(taskText, taskElement);
-        tasksLists.doneTasksList.setTask(addTaskDone(taskText), taskText);
+        tasksLists.completedTasksList.setTask(addTaskCompleted(taskText), taskText);
       },
+      dragEventListener: dragAndDrop.dragEventListener,
     },
     constants.taskTemplate,
   );
@@ -55,10 +58,11 @@ const addTaskInProgress = (item) => {
       deleteTask: (taskText, taskElement) => {
         tasksLists.inProgressTasksList.deleteTask(taskText, taskElement);
       },
-      doneTask: (taskText, taskElement) => {
+      completedTask: (taskText, taskElement) => {
         tasksLists.inProgressTasksList.deleteTask(taskText, taskElement);
-        tasksLists.doneTasksList.setTask(addTaskDone(taskText), taskText);
+        tasksLists.completedTasksList.setTask(addTaskCompleted(taskText), taskText);
       },
+      dragEventListener: dragAndDrop.dragEventListener,
     },
     constants.taskTemplate,
   );
@@ -66,8 +70,8 @@ const addTaskInProgress = (item) => {
   return taskElement;
 };
 
-const addTaskDone = (item) => {
-  const task = new TaskDone(
+const addTaskCompleted = (item) => {
+  const task = new TaskCompleted(
     {
       text: item,
       editTask: (taskText, taskElement) => {
@@ -75,7 +79,7 @@ const addTaskDone = (item) => {
         formValidators.editTaskForm.resetValidation();
       },
       deleteTask: (taskText, taskElement) => {
-        tasksLists.doneTasksList.deleteTask(taskText, taskElement);
+        tasksLists.completedTasksList.deleteTask(taskText, taskElement);
       },
     },
     constants.taskTemplate,
@@ -90,6 +94,13 @@ tasksLists.toDoTasksList = new Section(
     renderer: (taskText) => {
       tasksLists.toDoTasksList.setTask(addTask(taskText), taskText);
     },
+    rendererOnDrop: (taskText) => {
+      tasksLists.toDoTasksList.setTaskOnDrop(addTask(taskText));
+    },
+    dragoverEventListener: dragAndDrop.dragoverEventListener,
+    dragenterEventListener: dragAndDrop.dragenterEventListener,
+    dragleaveEventListener: dragAndDrop.dragleaveEventListener,
+    dropEventListener: dragAndDrop.dropEventListener,
   },
   constants.toDoTaskSection,
 );
@@ -100,22 +111,36 @@ tasksLists.inProgressTasksList = new Section(
     renderer: (taskText) => {
       tasksLists.inProgressTasksList.setTask(addTaskInProgress(taskText), taskText);
     },
+    rendererOnDrop: (taskText) => {
+      tasksLists.inProgressTasksList.setTaskOnDrop(addTaskInProgress(taskText));
+    },
+    dragoverEventListener: dragAndDrop.dragoverEventListener,
+    dragenterEventListener: dragAndDrop.dragenterEventListener,
+    dragleaveEventListener: dragAndDrop.dragleaveEventListener,
+    dropEventListener: dragAndDrop.dropEventListener,
   },
   constants.inProgressTaskSection,
 );
 
-tasksLists.doneTasksList = new Section(
+tasksLists.completedTasksList = new Section(
   {
-    keyInLocalStorage: 'done',
+    keyInLocalStorage: 'completed',
     renderer: (taskText) => {
-      tasksLists.doneTasksList.setTask(addTaskDone(taskText), taskText);
+      tasksLists.completedTasksList.setTask(addTaskCompleted(taskText), taskText);
     },
+    rendererOnDrop: (taskText) => {
+      tasksLists.completedTasksList.setTaskOnDrop(addTaskCompleted(taskText));
+    },
+    dragoverEventListener: dragAndDrop.dragoverEventListener,
+    dragenterEventListener: dragAndDrop.dragenterEventListener,
+    dragleaveEventListener: dragAndDrop.dragleaveEventListener,
+    dropEventListener: dragAndDrop.dropEventListener,
   },
-  constants.doneTaskSection,
+  constants.completedTaskSection,
 );
 
 const enableValidation = (formConfig) => {
-  const formsList = Array.from(document.querySelectorAll(formConfig.formSelector));
+  const formsList = [...document.querySelectorAll(formConfig.formSelector)];
   formsList.forEach((formElement) => {
     const validator = new FormValidator(formConfig, formElement);
     const formName = formElement.getAttribute('name');
@@ -148,9 +173,9 @@ const popupEditTask = new PopupEditTask(
 
 theme.enableTheme();
 scrollbar.setClass();
-tasksLists.toDoTasksList.setAppLoadListener();
-tasksLists.inProgressTasksList.setAppLoadListener();
-tasksLists.doneTasksList.setAppLoadListener();
+tasksLists.toDoTasksList.addEventListeners();
+tasksLists.inProgressTasksList.addEventListeners();
+tasksLists.completedTasksList.addEventListeners();
 enableValidation(constants.validationConfig);
 
 constants.buttonAddTask.addEventListener('click', () => {

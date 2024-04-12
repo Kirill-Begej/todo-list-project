@@ -1,0 +1,7 @@
+.task__item_dragging {
+  opacity: .6;
+
+  :where(.tasks__move, .tasks__item-title, .tasks__icons-wrap) {
+    opacity: 0;
+  }
+}
