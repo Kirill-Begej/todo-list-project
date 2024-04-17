@@ -81,6 +81,7 @@ const addTaskCompleted = (item) => {
       deleteTask: (taskText, taskElement) => {
         tasksLists.completedTasksList.deleteTask(taskText, taskElement);
       },
+      dragEventListener: dragAndDrop.dragEventListener,
     },
     constants.taskTemplate,
   );

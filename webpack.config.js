@@ -105,7 +105,7 @@ module.exports = (env) => {
     ].filter(Boolean),
     module: {
       rules: [
-        htmlLoader,
+        isProd && htmlLoader,
         scssLoader,
         fontsLoader,
         svgLoader,

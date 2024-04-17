@@ -1,8 +1,6 @@
-/* eslint-disable max-len */
 export default class DragAndDrop {
   dragEventListener(element) {
-    element.addEventListener('dragstart', (e) => {
-      e.dataTransfer.setData('text/plain', e.target.parentNode.id);
+    element.addEventListener('dragstart', () => {
       setTimeout(() => {
         element.classList.add('task__item_dragging');
       }, 0);
@@ -15,12 +13,12 @@ export default class DragAndDrop {
   dragoverEventListener(container) {
     container.addEventListener('dragover', (e) => {
       e.preventDefault();
-      if (e.currentTarget.id === 'toDo' || e.currentTarget.id === 'inProgress') {
-        const draggingElement = document.querySelector('.task__item_dragging');
-        const siblingsDraggingElement = [...container.querySelectorAll('.tasks__item:not(.task__item_dragging)')];
-        const nextSibling = siblingsDraggingElement.find(
-          (sibling) => e.clientY <= sibling.getBoundingClientRect().y + sibling.offsetHeight / 2,
-        );
+      const draggingElement = document.querySelector('.task__item_dragging');
+      const siblingsDraggingElement = [...container.querySelectorAll('.tasks__item:not(.task__item_dragging)')];
+      const nextSibling = siblingsDraggingElement.find(
+        (sibling) => e.clientY <= sibling.getBoundingClientRect().y + sibling.offsetHeight / 2,
+      );
+      if (draggingElement) {
         container.insertBefore(draggingElement, nextSibling);
       }
     });
@@ -42,6 +40,7 @@ export default class DragAndDrop {
   dropEventListener(container) {
     container.addEventListener('drop', (e) => {
       e.preventDefault();
+      this._setSectionsInLocalStorage();
       const tasks = [...container.querySelectorAll('.tasks__item-title')].map((item) => item.textContent);
       this._renderedTask = tasks;
       this._setInLocalStorage();
