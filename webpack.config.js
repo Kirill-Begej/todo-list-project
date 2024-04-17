@@ -1,13 +1,17 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 module.exports = (env) => {
   const isDev = env.mode === 'development';
   const isProd = env.mode === 'production';
+
+  const htmlLoader = {
+    test: /\.html$/i,
+    loader: 'html-loader',
+  };
 
   const postCssLoader = {
     loader: 'postcss-loader',
@@ -101,6 +105,7 @@ module.exports = (env) => {
     ].filter(Boolean),
     module: {
       rules: [
+        htmlLoader,
         scssLoader,
         fontsLoader,
         svgLoader,
